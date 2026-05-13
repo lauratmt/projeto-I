@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "Refrigerante_Projeto1.html#contexto",
+    "href": "Refrigerante_Projeto1.html#contexto",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Contexto",
+    "text": "Contexto\n\n\nPandemia de COVID-19\nCausou profundas mudanças nos padrões sociais, econômicos e comportamentais da população a partir de 2020.\nIsolamento\nAlterou a rotina alimentar da população, com maior tempo em casa e acesso restrito a alimentos.\nDesigualdades econômicas\nDificuldades financeiras e restrição de acesso a alimentos impactaram de forma desigual os hábitos alimentares conforme a renda familiar.\nBebidas ultraprocessadas\nRefrigerantes são associados a pior qualidade dietética e maior risco de doenças crônicas. Assim, compreender mudanças no seu consumo tem relevância em saúde pública."
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#objetivo",
+    "href": "Refrigerante_Projeto1.html#objetivo",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Objetivo",
+    "text": "Objetivo\nObjetivo principal\n\nInvestigar os fatores sociodemográficos, econômicos e comportamentais associados à mudança no consumo de refrigerantes reportada pelos participantes durante a pandemia de COVID-19.\n\nObjetivos específicos\n\nDescrever a distribuição do consumo de refrigerantes (Aumentou, Diminuiu, Não alterou, Não consumo)\nAvaliar a associação entre a variável resposta e as variáveis categóricas\nComparar indicadores antropométricos entre os grupos\nExplorar os sentimentos relatados durante a pandemia por grupo de consumo"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#base-de-dados",
+    "href": "Refrigerante_Projeto1.html#base-de-dados",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Base de Dados",
+    "text": "Base de Dados\n\n\n\nOrigem: questionário online aplicado em 2022\nAmostra: 2.310 indivíduos\nVariável resposta: Refrigerante\n\nAumentou | Diminuiu | Não alterou | Não consumo\n\n\n\n\n\n\n\n\n\n\nTipo\nVariáveis\nN\n\n\n\n\nCategóricas\nGênero, Raça/cor, Região, Renda, Escolaridade, Isolamento, Trabalha, Prof. Saúde, Covid, Consulta Nutricionista, Dif. Financeira, Acesso Alimento, Tempo Preparo, Cigarro, Atividade física\n15\n\n\nContínuas\nIdade, Altura, Peso, IMC\n4\n\n\nAberta\nSentimentos durante a pandemia\n1"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#gênero",
+    "href": "Refrigerante_Projeto1.html#gênero",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Gênero",
+    "text": "Gênero\n\n\n\nχ² = 21.21 | p = 0.0001 | V de Cramér = 0.096\n\n\nGênero\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nFeminino\n359 (20.7%)\n316 (18.2%)\n488 (28.1%)\n572 (33.0%)\n\n\nMasculino\n96 (16.7%)\n138 (24.0%)*\n191 (33.2%)\n150 (26.1%)*\n\n\n\n\n\nCaselas influentes (|z| &gt; 1,96):\n\nMasculino × Diminuiu: z = 2,35 (mais frequente que esperado)\nMasculino × Não consumo: z = −2,22 (menos frequente que esperado)"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#isolamento-e-situação-de-trabalho",
+    "href": "Refrigerante_Projeto1.html#isolamento-e-situação-de-trabalho",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Isolamento e Situação de Trabalho",
+    "text": "Isolamento e Situação de Trabalho\n\n\n\nIsolamento — χ² = 14.73 | p = 0.0021 | V = 0.080\n\n\nIsolamento\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nNão\n191 (18.8%)\n202 (19.9%)\n336 (33.1%)*\n286 (28.2%)\n\n\nSim\n264 (20.4%)\n252 (19.5%)\n343 (26.5%)\n436 (33.7%)\n\n\n\n\n\n\n\n\n\nTrabalha — χ² = 24.90 | p\n\n\nTrabalha\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nNão\n145 (20.7%)\n166 (23.7%)*\n159 (22.7%)***\n229 (32.8%)\n\n\nSim\n310 (19.2%)\n288 (17.9%)\n520 (32.3%)*\n493 (30.6%)\n\n\n\n\n\n* |z| &gt; 1,96    *** |z| &gt; 2,58"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#renda-familiar",
+    "href": "Refrigerante_Projeto1.html#renda-familiar",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Renda Familiar",
+    "text": "Renda Familiar\n\n\n\nχ² = 34.41 | p\n\n\nRenda familiar\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\naté R$ 1254,00\n59 (21.5%)\n85 (30.9%)***\n68 (24.7%)\n63 (22.9%)*\n\n\nentre R$ 1.255 - R$ 8.640\n266 (20.1%)\n254 (19.2%)\n391 (29.5%)\n415 (31.3%)\n\n\nmais de R$ 8.640\n130 (18.3%)\n115 (16.2%)*\n220 (31.0%)\n244 (34.4%)\n\n\n\n\n\nCaselas influentes:\n\nRenda até R$1.254 × Diminuiu: z = 4,21 (restrição orçamentária como fator)\nRenda até R$1.254 × Não consumo: z = −2,48\nRenda &gt; R$8.640 × Diminuiu: z = −2,06"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#escolaridade",
+    "href": "Refrigerante_Projeto1.html#escolaridade",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Escolaridade",
+    "text": "Escolaridade\n\n\n\nχ² = 30.95 | p\n\n\nEscolaridade\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nEnsino Fundamental Completo\n12 (30.0%)\n9 (22.5%)\n14 (35.0%)\n5 (12.5%)*\n\n\nEnsino Médio Completo\n186 (20.7%)\n201 (22.3%)\n233 (25.9%)\n280 (31.1%)\n\n\nEnsino Superior Completo\n92 (22.9%)\n79 (19.7%)\n122 (30.3%)\n109 (27.1%)\n\n\nPós-graduação\n163 (16.9%)\n165 (17.1%)\n310 (32.1%)\n328 (34.0%)\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nPós-graduação apresentou menor proporção de aumento (16,9%) e maior de não consumo (34,0%)."
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#consulta-com-nutricionista-e-dificuldade-financeira",
+    "href": "Refrigerante_Projeto1.html#consulta-com-nutricionista-e-dificuldade-financeira",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Consulta com Nutricionista e Dificuldade Financeira",
+    "text": "Consulta com Nutricionista e Dificuldade Financeira\n\n\n\nConsulta — χ² = 33.11 | p\n\n\nConsulta Nutricionista\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nNão\n400 (21.3%)\n351 (18.7%)\n573 (30.5%)\n552 (29.4%)\n\n\nSim\n55 (12.7%)***\n103 (23.7%)\n106 (24.4%)\n170 (39.2%)***\n\n\n\n\n\n\n\n\n\nDif. Financeira — χ² = 35.43 | p\n\n\nDificuldade Financeira\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nNão\n366 (19.4%)\n330 (17.5%)*\n576 (30.5%)\n615 (32.6%)\n\n\nSim\n89 (21.0%)\n124 (29.3%)***\n103 (24.3%)\n107 (25.3%)*"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#atividade-física-durante-a-pandemia",
+    "href": "Refrigerante_Projeto1.html#atividade-física-durante-a-pandemia",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Atividade Física durante a Pandemia",
+    "text": "Atividade Física durante a Pandemia\n\n\n\nχ² = 63.97 | p\n\n\nAtividade Física\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nAumentou\n90 (14.0%)***\n157 (24.4%)***\n170 (26.4%)\n227 (35.2%)\n\n\nDiminuiu\n247 (23.9%)***\n175 (16.9%)*\n300 (29.0%)\n313 (30.2%)\n\n\nNão alterou\n41 (12.9%)***\n52 (16.3%)\n118 (37.0%)*\n108 (33.9%)\n\n\nNão tenho o hábito\n77 (24.7%)*\n70 (22.4%)\n91 (29.2%)\n74 (23.7%)*"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#variáveis-contínuas-kruskal-wallis",
+    "href": "Refrigerante_Projeto1.html#variáveis-contínuas-kruskal-wallis",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Variáveis Contínuas — Kruskal-Wallis",
+    "text": "Variáveis Contínuas — Kruskal-Wallis\n\n\n\nTeste de Kruskal-Wallis\n\n\nVariável\nAumentou\nDiminuiu\nNão alterou\nNão consumo\np-valor\n\n\n\n\nIdade — mediana\n28.00\n29.00\n32.00\n31.00\n&lt; 0,001\n\n\nPeso (kg) — mediana\n71.00\n69.00\n67.00\n64.00\n&lt; 0,001\n\n\nIMC (kg/m²) — mediana\n26.10\n24.90\n24.30\n23.70\n&lt; 0,001\n\n\nAltura (m) — mediana\n1.64\n1.65\n1.65\n1.65\n0.059"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#comparações-múltiplas-imc",
+    "href": "Refrigerante_Projeto1.html#comparações-múltiplas-imc",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Comparações Múltiplas — IMC",
+    "text": "Comparações Múltiplas — IMC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMann-Whitney + Bonferroni (n = 6 pares)\n\n\nPar\np ajustado\nSig\n\n\n\n\nAumentou vs Diminuiu\n0.002\n**\n\n\nAumentou vs Não alterou\n&lt; 0,001\n***\n\n\nAumentou vs Não consumo\n&lt; 0,001\n***\n\n\nDiminuiu vs Não alterou\n1.000\nns\n\n\nDiminuiu vs Não consumo\n&lt; 0,001\n***\n\n\nNão alterou vs Não consumo\n0.003\n**\n\n\n\n\n\n* p&lt;0,05   ** p&lt;0,01   *** p&lt;0,001"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#sentimentos-durante-a-pandemia",
+    "href": "Refrigerante_Projeto1.html#sentimentos-durante-a-pandemia",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Sentimentos durante a Pandemia",
+    "text": "Sentimentos durante a Pandemia\n\n\n\n\n\n\n\nNote\n\n\nAnsiedade, Estresse e Medo foram os sentimentos mais frequentes em todos os grupos, sem diferenças marcantes no perfil emocional entre as categorias."
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#síntese-dos-resultados",
+    "href": "Refrigerante_Projeto1.html#síntese-dos-resultados",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Síntese dos Resultados",
+    "text": "Síntese dos Resultados\nVariáveis com associação significativa (p &lt; 0,05):\nAtividade física (V=0,096) · Consulta com nutricionista (V=0,120) · Dificuldade financeira (V=0,124) · Acesso a alimentos (V=0,124) · Renda (V=0,086) · Escolaridade (V=0,075) · Gênero (V=0,096) · Isolamento (V=0,080) · Trabalho (V=0,104) · Tempo de preparo das refeições (V=0,091) · COVID-19 (V=0,059) · Raça/cor (V=0,061)\nVariáveis sem associação significativa: Cigarro (p=0,174) · Altura (p=0,059)\nVariáveis contínuas: IMC e Peso diferiram significativamente entre todos os grupos (p&lt;0,001); Idade diferiu entre “Aumentou” e os demais; Altura não foi significativa."
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#conclusão-1",
+    "href": "Refrigerante_Projeto1.html#conclusão-1",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Conclusão",
+    "text": "Conclusão\n31% dos participantes declararam não consumir refrigerantes. Entre os consumidores:\n\nDificuldade financeira e dificuldade de acesso a alimentos foram os principais preditores de redução no consumo — sugestivo de restrição orçamentária\nRedução da atividade física esteve associada ao aumento no consumo de refrigerantes\nAcompanhamento com nutricionista e maior nível socioeconômico associaram-se ao não consumo ou redução\nParticipantes que aumentaram o consumo apresentaram IMC e peso medianos maiores\n\n\nOs resultados reforçam a importância de políticas de saúde pública que integrem suporte financeiro, incentivo à atividade física e acesso a acompanhamento nutricional para a promoção de hábitos alimentares saudáveis."
+  }
+]
