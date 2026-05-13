@@ -28,6 +28,7 @@ library(tidyr)
 library(stringr)
 library(wordcloud2)
 
+# Paleta de cores
 cores <- c(
   "Aumentou"    = "#C0392B",
   "Diminuiu"    = "#2980B9",
@@ -85,25 +86,23 @@ tabela_freq <- function(df, var) {
 ## Contexto
 
 :::: {.columns}
-::: {.column width="100%"}
+::: {.column width="50%"}
 **Pandemia de COVID-19**
 
-Causou profundas mudanças nos padrões sociais, econômicos e comportamentais da população a partir de 2020.
+A pandemia provocou profundas mudanças nos padrões sociais, econômicos e comportamentais da população a partir de 2020.
 
+**Isolamento e rotina alimentar**
 
-**Isolamento**
-
-Alterou a rotina alimentar da população, com maior tempo em casa e acesso restrito a alimentos.
-
-
+Medidas de isolamento alteraram a rotina alimentar de milhões de brasileiros, com maior tempo em casa e acesso restrito a alimentos.
+:::
+::: {.column width="50%"}
 **Desigualdades econômicas**
 
 Dificuldades financeiras e restrição de acesso a alimentos impactaram de forma desigual os hábitos alimentares conforme a renda familiar.
 
-
 **Bebidas ultraprocessadas**
 
-Refrigerantes são associados a pior qualidade dietética e maior risco de doenças crônicas. Assim, compreender mudanças no seu consumo tem relevância em saúde pública.
+Refrigerantes são associados a pior qualidade dietética e maior risco de doenças crônicas — compreender mudanças no seu consumo tem relevância em saúde pública.
 :::
 ::::
 
@@ -155,6 +154,24 @@ df %>%
 ```
 :::
 ::::
+
+## Métodos Estatísticos
+
+| Método | Finalidade | Condição de aplicação |
+|---|---|---|
+| **Qui-quadrado (χ²)** | Associação entre Refrigerante e variáveis categóricas | Freq. esperadas ≥ 5 em ≥ 80% das células |
+| **V de Cramér** | Intensidade da associação (0 = nenhuma; 1 = perfeita) | Calculado a partir do χ² |
+| **Resíduo padronizado** | Caselas com contribuição expressiva (\|z\| > 1,96) | Complementa o χ² |
+| **Shapiro-Wilk** | Verificar normalidade por grupo | Amostras de cada grupo |
+| **Bartlett / Levene** | Verificar homocedasticidade | Dados normais / não normais |
+| **ANOVA (`aov`)** | Comparar médias entre 4 grupos | Normalidade + variâncias iguais |
+| **Bonferroni ou Tukey** | Comparações múltiplas pós-ANOVA | Após rejeição da ANOVA |
+| **ANOVA de Welch (`oneway.test`)** | Comparar médias sem assumir variâncias iguais | Normalidade + variâncias desiguais |
+| **Nuvem de palavras** | Sentimentos relatados por grupo | Análise descritiva |
+
+::: {.callout-note}
+Nível de significância: **α = 5%**. Pacotes utilizados: `dplyr`, `ggplot2`, `kableExtra`, `DescTools`, `wordcloud`, `readxl`.
+:::
 
 # Resultados {background-color="#1B4332"}
 
@@ -320,43 +337,100 @@ df %>%
   theme(legend.position = "right")
 ```
 
-## Variáveis Contínuas — Kruskal-Wallis
+## Variáveis Contínuas — Medidas Resumo e Diagnósticos
 
-```{r continuas}
+```{r continuas-resumo}
+library(DescTools)
+library(rstatix)
+
+cont_vars <- c("Idade", "Peso", "IMC", "Altura")
+
+# Medidas resumo
 resumo_cont <- df %>%
   group_by(Refrigerante) %>%
   summarise(
-    `Idade — mediana` = median(Idade),
-    `Peso (kg) — mediana` = median(Peso),
-    `IMC (kg/m²) — mediana` = round(median(IMC), 1),
-    `Altura (m) — mediana` = round(median(Altura), 2),
+    Idade       = median(Idade),
+    `Peso (kg)` = median(Peso),
+    `IMC`       = round(median(IMC), 1),
+    `Altura (m)`= round(median(Altura), 2),
     .groups = "drop"
   ) %>%
   pivot_longer(-Refrigerante) %>%
   pivot_wider(names_from = Refrigerante, values_from = value) %>%
   rename(Variável = name)
 
-kw_res <- sapply(c("Idade","Peso","IMC","Altura"), function(v) {
-  g <- split(df[[v]], df$Refrigerante)
-  p <- kruskal.test(g)$p.value
-  ifelse(p < 0.001, "< 0,001", sprintf("%.3f", p))
+# Shapiro-Wilk: todos os grupos normais?
+shapiro_ok <- sapply(cont_vars, function(v) {
+  ps <- tapply(df[[v]], df$Refrigerante, function(x) shapiro.test(x)$p.value)
+  all(ps > 0.05)
 })
 
-resumo_cont$`p-valor` <- kw_res
+# Levene: variâncias homogêneas?
+levene_ok <- sapply(cont_vars, function(v) {
+  LeveneTest(df[[v]] ~ df$Refrigerante)$`Pr(>F)`[1] > 0.05
+})
 
+diagnosticos <- data.frame(
+  Variável     = cont_vars,
+  `Shapiro-Wilk (todos grupos normais?)` = ifelse(shapiro_ok, "Sim", "Não"),
+  `Levene (variâncias homogêneas?)`      = ifelse(levene_ok,  "Sim", "Não"),
+  `Teste aplicado` = ifelse(shapiro_ok & levene_ok, "ANOVA", "ANOVA de Welch"),
+  check.names = FALSE
+)
+
+diagnosticos %>%
+  kbl(align = c("l","c","c","c"),
+      caption = "Diagnósticos de normalidade e homocedasticidade (α = 5%)") %>%
+  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE) %>%
+  column_spec(1, bold = TRUE) %>%
+  row_spec(0, background = "#1B4332", color = "white")
+```
+
+```{r resumo-medianas}
 resumo_cont %>%
-  kbl(align = c("l","c","c","c","c","c"),
-      caption = "Teste de Kruskal-Wallis") %>%
+  kbl(align = c("l","c","c","c","c"),
+      caption = "Mediana por categoria de Refrigerante") %>%
+  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 14) %>%
+  column_spec(1, bold = TRUE) %>%
+  row_spec(0, background = "#1B4332", color = "white")
+```
+
+## Variáveis Contínuas — ANOVA de Welch
+
+```{r welch}
+welch_res <- sapply(cont_vars, function(v) {
+  r <- oneway.test(df[[v]] ~ df$Refrigerante, var.equal = FALSE)
+  list(F = round(r$statistic, 2), df1 = round(r$parameter[1], 1),
+       df2 = round(r$parameter[2], 1), p = r$p.value)
+}, simplify = FALSE)
+
+tab_welch <- data.frame(
+  Variável  = cont_vars,
+  `F`       = sapply(welch_res, function(x) x$F),
+  `gl num`  = sapply(welch_res, function(x) x$df1),
+  `gl den`  = sapply(welch_res, function(x) x$df2),
+  `p-valor` = sapply(welch_res, function(x)
+    ifelse(x$p < 0.001, "< 0,001", sprintf("%.3f", x$p))),
+  check.names = FALSE
+)
+
+tab_welch %>%
+  kbl(align = c("l","c","c","c","c"),
+      caption = "ANOVA de Welch — comparação de médias entre categorias de Refrigerante") %>%
   kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE) %>%
   column_spec(1, bold = TRUE) %>%
   row_spec(0, background = "#1B4332", color = "white") %>%
-  row_spec(4, color = "gray")   # Altura ns
+  row_spec(4, color = "gray")  # Altura ns
 ```
 
-## Comparações Múltiplas — IMC
+::: {.callout-note}
+Idade, Peso e IMC diferiram significativamente entre os grupos (p < 0,001). Altura não foi significativa (p = 0,059). Como Shapiro-Wilk ou Levene foram violados em todas as variáveis, aplicou-se a **ANOVA de Welch**, robusta à heterocedasticidade.
+:::
+
+## Comparações Múltiplas — Games-Howell (IMC)
 
 :::: {.columns}
-::: {.column width="55%"}
+::: {.column width="48%"}
 ```{r imc-plot, fig.height=4}
 df %>%
   group_by(Refrigerante) %>%
@@ -366,63 +440,66 @@ df %>%
   geom_text(aes(label = round(mediana, 1)), vjust = -0.5, size = 4.5, fontface = "bold") +
   scale_fill_manual(values = cores) +
   scale_y_continuous(limits = c(0, 29)) +
-  labs(x = NULL, y = "IMC mediano (kg/m²)", title = "IMC por categoria de Refrigerante") +
-  theme_minimal(base_size = 13) +
+  labs(x = NULL, y = "IMC mediano (kg/m²)",
+       title = "IMC mediano por categoria") +
+  theme_minimal(base_size = 12) +
   theme(panel.grid.major.x = element_blank())
 ```
 :::
-::: {.column width="45%"}
-```{r mann-whitney}
-pares <- combn(ordem, 2, simplify = FALSE)
-resultados <- lapply(pares, function(par) {
-  g1 <- df %>% filter(Refrigerante == par[1]) %>% pull(IMC)
-  g2 <- df %>% filter(Refrigerante == par[2]) %>% pull(IMC)
-  p  <- wilcox.test(g1, g2)$p.value * 6  # Bonferroni
-  p  <- min(p, 1)
-  sig <- ifelse(p < 0.001, "***", ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "ns")))
-  data.frame(Par = paste(par[1], "vs", par[2]),
-             `p ajustado` = ifelse(p < 0.001, "< 0,001", sprintf("%.3f", p)),
-             Sig = sig, check.names = FALSE)
-})
-
-bind_rows(resultados) %>%
-  kbl(align = c("l","c","c"),
-      caption = "Mann-Whitney + Bonferroni (n = 6 pares)") %>%
-  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 14) %>%
-  row_spec(0, background = "#1B4332", color = "white") %>%
-  row_spec(which(bind_rows(resultados)$Sig == "ns"), color = "gray")
+::: {.column width="52%"}
+```{r games-howell}
+df %>%
+  games_howell_test(IMC ~ Refrigerante) %>%
+  select(group1, group2, estimate, p.adj, p.adj.signif) %>%
+  rename(Grupo1 = group1, Grupo2 = group2,
+         `Diferença` = estimate,
+         `p ajustado` = p.adj,
+         Sig = p.adj.signif) %>%
+  kbl(align = c("l","l","c","c","c"),
+      caption = "Games-Howell — IMC") %>%
+  kable_styling(bootstrap_options = c("striped","hover"), full_width = TRUE, font_size = 13) %>%
+  row_spec(0, background = "#1B4332", color = "white")
 ```
 
-`*` p<0,05 &nbsp; `**` p<0,01 &nbsp; `***` p<0,001
+Games-Howell é o post-hoc indicado após ANOVA de Welch. Não assume igualdade de variâncias.
 :::
 ::::
 
+
+
 ## Sentimentos durante a Pandemia {.smaller}
 
-```{r wordclouds, fig.width=12, fig.height=4.5}
-sentimentos_df <- df %>%
+```{r wordclouds, fig.width=12, fig.height=5}
+library(wordcloud)
+
+sentimentos_freq <- df %>%
   select(Refrigerante, sentimentos_pandemia) %>%
   filter(!is.na(sentimentos_pandemia)) %>%
   mutate(sentimentos_pandemia = str_split(sentimentos_pandemia, ",")) %>%
   tidyr::unnest(sentimentos_pandemia) %>%
   mutate(sentimento = str_trim(str_to_title(sentimentos_pandemia))) %>%
   filter(nchar(sentimento) > 2) %>%
-  count(Refrigerante, sentimento) %>%
-  group_by(Refrigerante) %>%
-  slice_max(n, n = 10, with_ties = FALSE) %>%
-  ungroup() %>%
-  mutate(sentimento = reorder(paste(sentimento, Refrigerante, sep = "__"), n))
+  count(Refrigerante, sentimento)
 
-ggplot(sentimentos_df, aes(x = sentimento, y = n, fill = Refrigerante)) +
-  geom_col(show.legend = FALSE) +
-  scale_fill_manual(values = cores) +
-  scale_x_discrete(labels = function(x) sub("__.*", "", x)) +
-  coord_flip() +
-  facet_wrap(~Refrigerante, scales = "free_y", ncol = 4) +
-  labs(x = NULL, y = "Frequência", title = "Top 10 sentimentos por categoria") +
-  theme_minimal(base_size = 11) +
-  theme(strip.text = element_text(face = "bold"),
-        panel.grid.major.y = element_blank())
+par(mfrow = c(1, 4), mar = c(0, 0, 2, 0))
+
+for (cat in ordem) {
+  dados <- sentimentos_freq %>%
+    filter(Refrigerante == cat) %>%
+    arrange(desc(n))
+
+  wordcloud(
+    words = dados$sentimento,
+    freq  = dados$n,
+    max.words   = 30,
+    random.order = FALSE,
+    colors = colorRampPalette(c("gray70", cores[[cat]]))(5),
+    scale  = c(3.5, 0.5)
+  )
+  title(main = cat, col.main = cores[[cat]], cex.main = 1.2)
+}
+
+par(mfrow = c(1, 1))
 ```
 
 ::: {.callout-note}
@@ -439,15 +516,15 @@ Atividade física (V=0,096) · Consulta com nutricionista (V=0,120) · Dificulda
 
 **Variáveis sem associação significativa:** Cigarro (p=0,174) · Altura (p=0,059)
 
-**Variáveis contínuas:** IMC e Peso diferiram significativamente entre todos os grupos (p<0,001); Idade diferiu entre "Aumentou" e os demais; Altura não foi significativa.
+**Variáveis contínuas:** IMC, Peso e Idade diferiram significativamente entre os grupos (ANOVA de Welch, p<0,001); Altura não foi significativa (p=0,059).
 
 ## Conclusão
 
 31% dos participantes declararam **não consumir refrigerantes**. Entre os consumidores:
 
-- **Dificuldade financeira** e **dificuldade de acesso a alimentos** foram os principais preditores de *redução* no consumo — sugestivo de restrição orçamentária
+- **Dificuldade financeira** e **dificuldade de acesso a alimentos** foram os principais preditores de *redução* no consumo, sugestivo de restrição orçamentária.
 - **Redução da atividade física** esteve associada ao *aumento* no consumo de refrigerantes
-- **Acompanhamento com nutricionista** e **maior nível socioeconômico** associaram-se ao não consumo ou redução
+- **Acompanhamento com nutricionista** e **maior nível socioeconômico** se associarm ao não consumo ou redução
 - Participantes que **aumentaram** o consumo apresentaram IMC e peso medianos maiores
 
 > Os resultados reforçam a importância de políticas de saúde pública que integrem suporte financeiro, incentivo à atividade física e acesso a acompanhamento nutricional para a promoção de hábitos alimentares saudáveis.
