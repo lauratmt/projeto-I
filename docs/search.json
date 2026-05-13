@@ -4,7 +4,7 @@
     "href": "Refrigerante_Projeto1.html#contexto",
     "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
     "section": "Contexto",
-    "text": "Contexto\n\n\nPandemia de COVID-19\nCausou profundas mudanças nos padrões sociais, econômicos e comportamentais da população a partir de 2020.\nIsolamento\nAlterou a rotina alimentar da população, com maior tempo em casa e acesso restrito a alimentos.\nDesigualdades econômicas\nDificuldades financeiras e restrição de acesso a alimentos impactaram de forma desigual os hábitos alimentares conforme a renda familiar.\nBebidas ultraprocessadas\nRefrigerantes são associados a pior qualidade dietética e maior risco de doenças crônicas. Assim, compreender mudanças no seu consumo tem relevância em saúde pública."
+    "text": "Contexto\n\n\nPandemia de COVID-19\nA pandemia provocou profundas mudanças nos padrões sociais, econômicos e comportamentais da população a partir de 2020.\nIsolamento e rotina alimentar\nMedidas de isolamento alteraram a rotina alimentar de milhões de brasileiros, com maior tempo em casa e acesso restrito a alimentos.\n\nDesigualdades econômicas\nDificuldades financeiras e restrição de acesso a alimentos impactaram de forma desigual os hábitos alimentares conforme a renda familiar.\nBebidas ultraprocessadas\nRefrigerantes são associados a pior qualidade dietética e maior risco de doenças crônicas — compreender mudanças no seu consumo tem relevância em saúde pública."
   },
   {
     "objectID": "Refrigerante_Projeto1.html#objetivo",
@@ -19,6 +19,13 @@
     "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
     "section": "Base de Dados",
     "text": "Base de Dados\n\n\n\nOrigem: questionário online aplicado em 2022\nAmostra: 2.310 indivíduos\nVariável resposta: Refrigerante\n\nAumentou | Diminuiu | Não alterou | Não consumo\n\n\n\n\n\n\n\n\n\n\nTipo\nVariáveis\nN\n\n\n\n\nCategóricas\nGênero, Raça/cor, Região, Renda, Escolaridade, Isolamento, Trabalha, Prof. Saúde, Covid, Consulta Nutricionista, Dif. Financeira, Acesso Alimento, Tempo Preparo, Cigarro, Atividade física\n15\n\n\nContínuas\nIdade, Altura, Peso, IMC\n4\n\n\nAberta\nSentimentos durante a pandemia\n1"
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#métodos-estatísticos",
+    "href": "Refrigerante_Projeto1.html#métodos-estatísticos",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Métodos Estatísticos",
+    "text": "Métodos Estatísticos\n\n\n\n\n\n\n\n\nMétodo\nFinalidade\nCondição de aplicação\n\n\n\n\nQui-quadrado (χ²)\nAssociação entre Refrigerante e variáveis categóricas\nFreq. esperadas ≥ 5 em ≥ 80% das células\n\n\nV de Cramér\nIntensidade da associação (0 = nenhuma; 1 = perfeita)\nCalculado a partir do χ²\n\n\nResíduo padronizado\nCaselas com contribuição expressiva (|z| &gt; 1,96)\nComplementa o χ²\n\n\nShapiro-Wilk\nVerificar normalidade por grupo\nAmostras de cada grupo\n\n\nBartlett / Levene\nVerificar homocedasticidade\nDados normais / não normais\n\n\nANOVA (aov)\nComparar médias entre 4 grupos\nNormalidade + variâncias iguais\n\n\nBonferroni ou Tukey\nComparações múltiplas pós-ANOVA\nApós rejeição da ANOVA\n\n\nANOVA de Welch (oneway.test)\nComparar médias sem assumir variâncias iguais\nNormalidade + variâncias desiguais\n\n\nNuvem de palavras\nSentimentos relatados por grupo\nAnálise descritiva\n\n\n\n\n\n\n\n\n\nNote\n\n\nNível de significância: α = 5%. Pacotes utilizados: dplyr, ggplot2, kableExtra, DescTools, wordcloud, readxl."
   },
   {
     "objectID": "Refrigerante_Projeto1.html#gênero",
@@ -63,18 +70,25 @@
     "text": "Atividade Física durante a Pandemia\n\n\n\nχ² = 63.97 | p\n\n\nAtividade Física\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nAumentou\n90 (14.0%)***\n157 (24.4%)***\n170 (26.4%)\n227 (35.2%)\n\n\nDiminuiu\n247 (23.9%)***\n175 (16.9%)*\n300 (29.0%)\n313 (30.2%)\n\n\nNão alterou\n41 (12.9%)***\n52 (16.3%)\n118 (37.0%)*\n108 (33.9%)\n\n\nNão tenho o hábito\n77 (24.7%)*\n70 (22.4%)\n91 (29.2%)\n74 (23.7%)*"
   },
   {
-    "objectID": "Refrigerante_Projeto1.html#variáveis-contínuas-kruskal-wallis",
-    "href": "Refrigerante_Projeto1.html#variáveis-contínuas-kruskal-wallis",
+    "objectID": "Refrigerante_Projeto1.html#variáveis-contínuas-medidas-resumo-e-diagnósticos",
+    "href": "Refrigerante_Projeto1.html#variáveis-contínuas-medidas-resumo-e-diagnósticos",
     "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
-    "section": "Variáveis Contínuas — Kruskal-Wallis",
-    "text": "Variáveis Contínuas — Kruskal-Wallis\n\n\n\nTeste de Kruskal-Wallis\n\n\nVariável\nAumentou\nDiminuiu\nNão alterou\nNão consumo\np-valor\n\n\n\n\nIdade — mediana\n28.00\n29.00\n32.00\n31.00\n&lt; 0,001\n\n\nPeso (kg) — mediana\n71.00\n69.00\n67.00\n64.00\n&lt; 0,001\n\n\nIMC (kg/m²) — mediana\n26.10\n24.90\n24.30\n23.70\n&lt; 0,001\n\n\nAltura (m) — mediana\n1.64\n1.65\n1.65\n1.65\n0.059"
+    "section": "Variáveis Contínuas — Medidas Resumo e Diagnósticos",
+    "text": "Variáveis Contínuas — Medidas Resumo e Diagnósticos\n\n\n\nDiagnósticos de normalidade e homocedasticidade (α = 5%)\n\n\n\nVariável\nShapiro-Wilk (todos grupos normais?)\nLevene (variâncias homogêneas?)\nTeste aplicado\n\n\n\n\nIdade\nIdade\nNão\nNão\nANOVA de Welch\n\n\nPeso\nPeso\nNão\nNão\nANOVA de Welch\n\n\nIMC\nIMC\nNão\nNão\nANOVA de Welch\n\n\nAltura\nAltura\nNão\nSim\nANOVA de Welch\n\n\n\n\n\n\n\n\nMediana por categoria de Refrigerante\n\n\nVariável\nAumentou\nDiminuiu\nNão alterou\nNão consumo\n\n\n\n\nIdade\n28.00\n29.00\n32.00\n31.00\n\n\nPeso (kg)\n71.00\n69.00\n67.00\n64.00\n\n\nIMC\n26.10\n24.90\n24.30\n23.70\n\n\nAltura (m)\n1.64\n1.65\n1.65\n1.65"
   },
   {
-    "objectID": "Refrigerante_Projeto1.html#comparações-múltiplas-imc",
-    "href": "Refrigerante_Projeto1.html#comparações-múltiplas-imc",
+    "objectID": "Refrigerante_Projeto1.html#variáveis-contínuas-anova-de-welch",
+    "href": "Refrigerante_Projeto1.html#variáveis-contínuas-anova-de-welch",
     "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
-    "section": "Comparações Múltiplas — IMC",
-    "text": "Comparações Múltiplas — IMC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMann-Whitney + Bonferroni (n = 6 pares)\n\n\nPar\np ajustado\nSig\n\n\n\n\nAumentou vs Diminuiu\n0.002\n**\n\n\nAumentou vs Não alterou\n&lt; 0,001\n***\n\n\nAumentou vs Não consumo\n&lt; 0,001\n***\n\n\nDiminuiu vs Não alterou\n1.000\nns\n\n\nDiminuiu vs Não consumo\n&lt; 0,001\n***\n\n\nNão alterou vs Não consumo\n0.003\n**\n\n\n\n\n\n* p&lt;0,05   ** p&lt;0,01   *** p&lt;0,001"
+    "section": "Variáveis Contínuas — ANOVA de Welch",
+    "text": "Variáveis Contínuas — ANOVA de Welch\n\n\n\nANOVA de Welch — comparação de médias entre categorias de Refrigerante\n\n\n\nVariável\nF\ngl num\ngl den\np-valor\n\n\n\n\nIdade.F\nIdade\n12.39\n3\n1188.4\n&lt; 0,001\n\n\nPeso.F\nPeso\n16.23\n3\n1164.9\n&lt; 0,001\n\n\nIMC.F\nIMC\n19.89\n3\n1160.1\n&lt; 0,001\n\n\nAltura.F\nAltura\n2.74\n3\n1177.8\n0.042\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nIdade, Peso e IMC diferiram significativamente entre os grupos (p &lt; 0,001). Altura não foi significativa (p = 0,059). Como Shapiro-Wilk ou Levene foram violados em todas as variáveis, aplicou-se a ANOVA de Welch, robusta à heterocedasticidade."
+  },
+  {
+    "objectID": "Refrigerante_Projeto1.html#comparações-múltiplas-games-howell-imc",
+    "href": "Refrigerante_Projeto1.html#comparações-múltiplas-games-howell-imc",
+    "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
+    "section": "Comparações Múltiplas — Games-Howell (IMC)",
+    "text": "Comparações Múltiplas — Games-Howell (IMC)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGames-Howell — IMC\n\n\nGrupo1\nGrupo2\nDiferença\np ajustado\nSig\n\n\n\n\nAumentou\nDiminuiu\n-1.2193849\n3.00e-03\n**\n\n\nAumentou\nNão alterou\n-1.5083264\n1.21e-05\n****\n\n\nAumentou\nNão consumo\n-2.3473271\n0.00e+00\n****\n\n\nDiminuiu\nNão alterou\n-0.2889415\n7.80e-01\nns\n\n\nDiminuiu\nNão consumo\n-1.1279422\n9.29e-04\n***\n\n\nNão alterou\nNão consumo\n-0.8390007\n6.00e-03\n**\n\n\n\n\n\nGames-Howell é o post-hoc indicado após ANOVA de Welch. Não assume igualdade de variâncias."
   },
   {
     "objectID": "Refrigerante_Projeto1.html#sentimentos-durante-a-pandemia",
@@ -88,13 +102,13 @@
     "href": "Refrigerante_Projeto1.html#síntese-dos-resultados",
     "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
     "section": "Síntese dos Resultados",
-    "text": "Síntese dos Resultados\nVariáveis com associação significativa (p &lt; 0,05):\nAtividade física (V=0,096) · Consulta com nutricionista (V=0,120) · Dificuldade financeira (V=0,124) · Acesso a alimentos (V=0,124) · Renda (V=0,086) · Escolaridade (V=0,075) · Gênero (V=0,096) · Isolamento (V=0,080) · Trabalho (V=0,104) · Tempo de preparo das refeições (V=0,091) · COVID-19 (V=0,059) · Raça/cor (V=0,061)\nVariáveis sem associação significativa: Cigarro (p=0,174) · Altura (p=0,059)\nVariáveis contínuas: IMC e Peso diferiram significativamente entre todos os grupos (p&lt;0,001); Idade diferiu entre “Aumentou” e os demais; Altura não foi significativa."
+    "text": "Síntese dos Resultados\nVariáveis com associação significativa (p &lt; 0,05):\nAtividade física (V=0,096) · Consulta com nutricionista (V=0,120) · Dificuldade financeira (V=0,124) · Acesso a alimentos (V=0,124) · Renda (V=0,086) · Escolaridade (V=0,075) · Gênero (V=0,096) · Isolamento (V=0,080) · Trabalho (V=0,104) · Tempo de preparo das refeições (V=0,091) · COVID-19 (V=0,059) · Raça/cor (V=0,061)\nVariáveis sem associação significativa: Cigarro (p=0,174) · Altura (p=0,059)\nVariáveis contínuas: IMC, Peso e Idade diferiram significativamente entre os grupos (ANOVA de Welch, p&lt;0,001); Altura não foi significativa (p=0,059)."
   },
   {
     "objectID": "Refrigerante_Projeto1.html#conclusão-1",
     "href": "Refrigerante_Projeto1.html#conclusão-1",
     "title": "Fatores Associados à Mudança no Consumo de Refrigerantes durante a Pandemia de COVID-19",
     "section": "Conclusão",
-    "text": "Conclusão\n31% dos participantes declararam não consumir refrigerantes. Entre os consumidores:\n\nDificuldade financeira e dificuldade de acesso a alimentos foram os principais preditores de redução no consumo — sugestivo de restrição orçamentária\nRedução da atividade física esteve associada ao aumento no consumo de refrigerantes\nAcompanhamento com nutricionista e maior nível socioeconômico associaram-se ao não consumo ou redução\nParticipantes que aumentaram o consumo apresentaram IMC e peso medianos maiores\n\n\nOs resultados reforçam a importância de políticas de saúde pública que integrem suporte financeiro, incentivo à atividade física e acesso a acompanhamento nutricional para a promoção de hábitos alimentares saudáveis."
+    "text": "Conclusão\n31% dos participantes declararam não consumir refrigerantes. Entre os consumidores:\n\nDificuldade financeira e dificuldade de acesso a alimentos foram os principais preditores de redução no consumo, sugestivo de restrição orçamentária.\nRedução da atividade física esteve associada ao aumento no consumo de refrigerantes\nAcompanhamento com nutricionista e maior nível socioeconômico se associarm ao não consumo ou redução\nParticipantes que aumentaram o consumo apresentaram IMC e peso medianos maiores\n\n\nOs resultados reforçam a importância de políticas de saúde pública que integrem suporte financeiro, incentivo à atividade física e acesso a acompanhamento nutricional para a promoção de hábitos alimentares saudáveis."
   }
 ]
