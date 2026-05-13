@@ -1,0 +1,23 @@
+/* Cabeçalhos de seção */
+.reveal h1 { color: #ffffff; }
+.reveal h2 { color: #1B4332; font-size: 1.4em; border-bottom: 3px solid #52B788; padding-bottom: 6px; }
+
+/* Slide de seção com fundo verde */
+.reveal section[data-background-color="#1B4332"] h1,
+.reveal section[data-background-color="#1B4332"] h2 {
+  color: #ffffff;
+}
+
+/* Tabelas kableExtra */
+.reveal table { font-size: 0.78em; width: 100%; }
+.reveal table th { background-color: #1B4332 !important; color: white !important; }
+.reveal table td { padding: 4px 8px; }
+
+/* Callouts */
+.callout { font-size: 0.85em; }
+
+/* Texto menor em slides .smaller */
+.reveal .smaller { font-size: 0.82em; }
+
+/* Rodapé de slide-number */
+.reveal .slide-number { color: #52B788; }
